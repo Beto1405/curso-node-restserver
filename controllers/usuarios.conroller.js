@@ -1,7 +1,10 @@
 const {request,response} = require('express');
 
-const usuariosGet = (req, res = response) => {
-    res.json({msg:'aplication get'})
+const usuariosGet = (req = request, res = response) => {
+    
+    const query = req.query;
+    res.json({msg:'aplication get'
+            ,query})
   }
 const usuariosPost = (req = request, res = response) => {
 
