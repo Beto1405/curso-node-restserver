@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors');
+const { dbConnection } = require('../database/config');
 
 
 //ejemplo de middlware para entender (no esta en el curso)
@@ -16,14 +17,24 @@ class Server {
         this.app = express();
         this.port = process.env.PORT;
         this.usuariosPath = '../routers/usuarios';
+
+        //Servidor de la bd
+
+        this.conexionDB();
+
+
+        // Middlewares ( son como los decoradores de python)
         this.middlewares();
 
+        // Rutas de mi aplicacion
         this.routes();
 
        
     }
 
-  
+    async conexionDB(){
+        await dbConnection();
+    }
 
     middlewares(){
 
