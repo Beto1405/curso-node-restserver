@@ -1,13 +1,14 @@
 const express = require('express')
 const cors = require('cors');
 const { dbConnection } = require('../database/config');
+const { logger } = require('../middlewares/validar-campos');
 
 
 //ejemplo de middlware para entender (no esta en el curso)
-let logger = (req,res,next )=>{
-    console.log('Peticion de tipo', req.method);
-    next();
-}
+// let logger = (req,res,next )=>{
+//     console.log('Peticion de tipo', req.method);
+//     next();
+// }
 
 
 class Server {
@@ -38,13 +39,14 @@ class Server {
 
     middlewares(){
 
-        this.app.use(cors(),express.static('public'),logger);
+        this.app.use(cors(),logger,express.static('public')); //los decoradores van siempre antes de la funcion a decorar
         this.app.use(express.json());
     }
 
     routes(){
 
         this.app.use('/api/usuarios',require(this.usuariosPath))
+        // this.app.use('/api/usuarios',require(this.usuariosPath))
      
     }
 
