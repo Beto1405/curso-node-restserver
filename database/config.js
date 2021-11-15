@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const dbConnection = async()=>{
 
     try {
-        await mongoose.connect(process.env.MONGODB_CNN);
+        await mongoose.connect("mongodb+srv://uMongo:W0yY1O9lY3ErJuDg@miclouser.dno9i.mongodb.net/CafeDB");
         console.log('Base de datos online')
 
     } catch (error) {
