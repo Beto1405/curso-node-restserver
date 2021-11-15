@@ -17,7 +17,7 @@ class Server {
 
         this.app = express();
         this.port = process.env.PORT;
-        this.usuariosPath = '../routers/usuarios';
+        this.usuariosPath = '../routers/routers.usuarios';
 
         //Servidor de la bd
 
